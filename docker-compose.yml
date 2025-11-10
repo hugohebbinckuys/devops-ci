@@ -1,0 +1,17 @@
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: todos
+      #ici on donne ces variables pour que le script d'initialisation de l'image POSTGRES utilise ces credentials pour créer la bdd, le superuser et le mdp
+
+  app: 
+    build: .
+    #pour construire le conteneur based on le dockerfile du dossier courant
+    image: "devops-ci" 
+    #pour donner un nom a mon image 
+    ports: 
+      - "3000:3000"
+    #mapping du port 3000 dem on pc hote avec le port 3000 du docker engine de mon conteneur de app 
