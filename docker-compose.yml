@@ -1,6 +1,7 @@
 services:
   db:
     image: postgres:16
+    container_name: db_postgres_todos
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
@@ -9,9 +10,19 @@ services:
 
   app: 
     build: .
+    container_name: app_node_todos
     #pour construire le conteneur based on le dockerfile du dossier courant
     image: "devops-ci" 
     #pour donner un nom a mon image 
     ports: 
       - "3000:3000"
     #mapping du port 3000 dem on pc hote avec le port 3000 du docker engine de mon conteneur de app 
+    volumes: 
+      - .:/app 
+      #synchro entre dossier courant et workdir app 
+      - /app/node_modules 
+      # - /app/.tanstack/tmp  # crée un volume anonyme pour ce tmp
+
+      # volume anonyme pour pb de compatibilités node_modules windows / linux 
+    depends_on:
+      - db
