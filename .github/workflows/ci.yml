@@ -24,7 +24,7 @@ jobs:
         with: 
           node-version: 22
 
-      - name: Install dependeinces
+      - name: Install dependincese
         run: pnpm install
         # omme son nom l'indique
 
