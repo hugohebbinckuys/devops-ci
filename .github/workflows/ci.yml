@@ -1,0 +1,48 @@
+name: CI Pipeline
+
+on:
+  push: 
+    branches: 
+      -main
+  pull_requests: 
+    branches: 
+      -main
+
+jobs: 
+  unit-tests: 
+    name: Run unit-tests 
+    runs-on: ubuntu:latest
+
+    steps: 
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        # recup le code deouis la repo (actions est le owner (github actions ici car c une action faite et proposée par github action) et le @v3 est la version)
+
+      - name: Setup Node.js 
+        uses: actions/setup-node@3
+        #installe node22
+        with: 
+          node-version: 22
+
+      - name: Install dependeinces
+        run: pnpm install
+        # omme son nom l'indique
+
+      - name: format checks 
+        run: pnpm format:check 
+        #utilise le format:check du package.json
+      
+      - name: Lint checks
+        run: pnpm lint
+
+      - name: Run unit tests
+        run: pnpm test
+
+      - name: Doc build tests
+        run: pnpm build-storybook
+
+      - name: E2E tests 
+        run: pnpm test:e2e
+
+      - name: Build test
+        run: pnpm build
