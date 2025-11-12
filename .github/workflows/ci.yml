@@ -27,7 +27,7 @@ jobs:
           node-version: 22
 
       - name: Install pnpm
-        uses: npm install -g pnpm
+        run: npm install -g pnpm
 
       - name: Install dependincese
         run: pnpm install
