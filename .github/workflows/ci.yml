@@ -33,13 +33,14 @@ jobs:
         run: pnpm install
         # omme son nom l'indique
 
-      - name: format checks 
+      - name: format checks + modif
         run: pnpm format 
         #utilise le format du package.json
         #avant ct en check mtn j'ai enlevé pour que ca corrige auto
 
-      - name: Lint checks
-        run: pnpm lint
+      - name: Lint checks + modif
+        run: pnpm lint:fix
+        #meme chose la on fait les modifs direct
 
       - name: Run unit tests
         run: pnpm test
