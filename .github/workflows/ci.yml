@@ -22,7 +22,7 @@ jobs:
         # recup le code deouis la repo (actions est le owner (github actions ici car c une action faite et proposée par github action) et le @v3 est la version)
 
       - name: Setup Node.js 
-        uses: actions/setup-node@3
+        uses: actions/setup-node@v3
         #installe node22
         with: 
           node-version: 22
