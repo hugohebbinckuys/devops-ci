@@ -48,6 +48,9 @@ jobs:
       - name: Doc build tests
         run: pnpm build-storybook
 
+      - name: install browsers for playwright (tests e2e)
+        run: pnpm exec playwright install --with-deps
+
       - name: E2E tests 
         run: pnpm test:e2e
 
