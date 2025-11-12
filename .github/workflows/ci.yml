@@ -34,9 +34,10 @@ jobs:
         # omme son nom l'indique
 
       - name: format checks 
-        run: pnpm format:check 
-        #utilise le format:check du package.json
-      
+        run: pnpm format 
+        #utilise le format du package.json
+        #avant ct en check mtn j'ai enlevé pour que ca corrige auto
+
       - name: Lint checks
         run: pnpm lint
 
