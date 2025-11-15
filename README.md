@@ -1,3 +1,10 @@
+# How to run the app
+
+1. clone the repo
+2. copy the .env.example file : `cp .env.example .env` [in bash or in powershell it works]
+3. and now run : `docker compose up`
+
+
 Welcome to your new TanStack app!
 
 # Getting Started
